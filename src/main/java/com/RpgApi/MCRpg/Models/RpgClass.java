@@ -16,15 +16,11 @@ public class RpgClass {
     @Column(name = "principal_stat")
     private String principalStat;
 
-    @OneToMany(mappedBy = "rpgClass")
-    private List<RpgPlayer> rpgPlayer;
-
     public RpgClass(){}
 
-    public RpgClass(String name, String principalStat, List<RpgPlayer> rpgPlayer, String function) {
+    public RpgClass(String name, String principalStat, String function) {
         this.name = name;
         this.principalStat = principalStat;
-        this.rpgPlayer = rpgPlayer;
         this.function = function;
     }
 
@@ -34,14 +30,6 @@ public class RpgClass {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<RpgPlayer> getRpgPlayer() {
-        return rpgPlayer;
-    }
-
-    public void setRpgPlayer(List<RpgPlayer> rpgPlayer) {
-        this.rpgPlayer = rpgPlayer;
     }
 
     public String getFunction() {
@@ -58,5 +46,14 @@ public class RpgClass {
 
     public void setPrincipalStat(String principalStat) {
         this.principalStat = principalStat;
+    }
+
+    @Override
+    public String toString() {
+        return "RpgClass{" +
+                "name='" + name + '\'' +
+                ", function='" + function + '\'' +
+                ", principalStat='" + principalStat + '\'' +
+                '}';
     }
 }

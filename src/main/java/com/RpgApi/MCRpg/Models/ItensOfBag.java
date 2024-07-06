@@ -13,18 +13,20 @@ public class ItensOfBag {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "player_bag_id")
     private PlayerBag playerBag;
 
     @ManyToOne
-    private RpgItens rpgItens;
+    @JoinColumn(name = "item_id")
+    private RpgItem rpgItem;
 
     private int quantity;
 
     public ItensOfBag(){}
 
-    public ItensOfBag(PlayerBag playerBag, RpgItens rpgItens, int quantity) {
+    public ItensOfBag(PlayerBag playerBag, RpgItem rpgItem, int quantity) {
         this.playerBag = playerBag;
-        this.rpgItens = rpgItens;
+        this.rpgItem = rpgItem;
         this.quantity = quantity;
     }
 
@@ -44,12 +46,12 @@ public class ItensOfBag {
         this.playerBag = playerBag;
     }
 
-    public RpgItens getRpgItens() {
-        return rpgItens;
+    public RpgItem getRpgItens() {
+        return rpgItem;
     }
 
-    public void setRpgItens(RpgItens rpgItens) {
-        this.rpgItens = rpgItens;
+    public void setRpgItens(RpgItem rpgItem) {
+        this.rpgItem = rpgItem;
     }
 
     public int getQuantity() {
@@ -66,11 +68,21 @@ public class ItensOfBag {
         if (o == null || getClass() != o.getClass()) return false;
         ItensOfBag that = (ItensOfBag) o;
         return quantity == that.quantity && Objects.equals(id, that.id) && Objects.equals(playerBag, that.playerBag) &&
-                Objects.equals(rpgItens, that.rpgItens);
+                Objects.equals(rpgItem, that.rpgItem);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, playerBag, rpgItens, quantity);
+        return Objects.hash(id, playerBag, rpgItem, quantity);
+    }
+
+    @Override
+    public String toString() {
+        return "ItensOfBag{" +
+                "id=" + id +
+                ", playerBag=" + playerBag +
+                ", rpgItem=" + rpgItem +
+                ", quantity=" + quantity +
+                '}';
     }
 }

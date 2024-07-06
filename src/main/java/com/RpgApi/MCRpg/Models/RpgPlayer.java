@@ -1,7 +1,10 @@
 package com.RpgApi.MCRpg.Models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
+@JsonInclude(content = JsonInclude.Include.NON_NULL)
 @Entity
 @Table(name = "jogadores")
 public class RpgPlayer {
@@ -14,9 +17,23 @@ public class RpgPlayer {
 
     private int level;
 
-    @ManyToOne
-    @JoinColumn(name = "player_class")
+    @JsonProperty(value = "rpgClass")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_class", referencedColumnName = "name")
     private RpgClass rpgClass;
+
+    @OneToOne
+    @JoinColumn(name = "bag_id", referencedColumnName = "id")
+    private PlayerBag playerBag;
+
+    public RpgPlayer() {
+    }
+
+    public RpgPlayer(RpgClass rpgClass, int level, String name) {
+        this.rpgClass = rpgClass;
+        this.level = level;
+        this.name = name;
+    }
 
     public int getLevel() {
         return level;
@@ -48,5 +65,16 @@ public class RpgPlayer {
 
     public void setRpgClass(RpgClass rpgClass) {
         this.rpgClass = rpgClass;
+    }
+
+    @Override
+    public String toString() {
+        return "RpgPlayer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", level=" + level +
+                ", rpgClass=" + rpgClass +
+                ", playerBag=" + playerBag +
+                '}';
     }
 }
