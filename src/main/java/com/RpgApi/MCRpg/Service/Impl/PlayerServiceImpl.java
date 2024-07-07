@@ -1,5 +1,6 @@
 package com.RpgApi.MCRpg.Service.Impl;
 
+import com.RpgApi.MCRpg.CustomExceptions.NotFoundException;
 import com.RpgApi.MCRpg.Models.RpgClass;
 import com.RpgApi.MCRpg.Models.RpgPlayer;
 import com.RpgApi.MCRpg.Repos.PlayerRepo;
@@ -33,6 +34,9 @@ public class PlayerServiceImpl implements PlayerService {
         if(optClass.isPresent()){
             rpgPlayer.setRpgClass(optClass.get());
             return playerRepo.save(rpgPlayer);
+        }
+        else if (optClass.isEmpty()){
+            throw new NotFoundException("classe não encontrada!");
         }
         return null;
     }

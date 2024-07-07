@@ -17,7 +17,11 @@ public class RpgClassServiceImpl implements RpgClassService {
 
     @Override
     public RpgClass addRpgClass(RpgClass rpgClass) {
-        return rcp.save(rpgClass);
+        if(rpgClass.getName() != null && rpgClass.getFunction() != null
+         && rpgClass.getPrincipalStat() != null){
+            return rcp.save(rpgClass);
+        }
+        return null;
     }
 
     @Override
