@@ -1,5 +1,6 @@
 package com.RpgApi.MCRpg.Service.Impl;
 
+import com.RpgApi.MCRpg.CustomExceptions.RpgClassInvalidException;
 import com.RpgApi.MCRpg.Models.RpgClass;
 import com.RpgApi.MCRpg.Repos.RpgClassRepo;
 import com.RpgApi.MCRpg.Service.RpgClassService;
@@ -17,11 +18,13 @@ public class RpgClassServiceImpl implements RpgClassService {
 
     @Override
     public RpgClass addRpgClass(RpgClass rpgClass) {
-        if(rpgClass.getName() != null && rpgClass.getFunction() != null
-         && rpgClass.getPrincipalStat() != null){
-            return rcp.save(rpgClass);
+        if (rpgClass.getPrincipalStat() == null |
+                rpgClass.getFunction() == null |
+                rpgClass.getName() == null){
+
+            throw new RpgClassInvalidException("Classe invalida, cheque os parametros!");
         }
-        return null;
+        return rcp.save(rpgClass);
     }
 
     @Override

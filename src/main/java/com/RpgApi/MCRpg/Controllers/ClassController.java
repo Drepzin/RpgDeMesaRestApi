@@ -1,5 +1,6 @@
 package com.RpgApi.MCRpg.Controllers;
 
+import com.RpgApi.MCRpg.CustomExceptions.RpgClassInvalidException;
 import com.RpgApi.MCRpg.Models.RpgClass;
 import com.RpgApi.MCRpg.Service.RpgClassService;
 import org.springframework.beans.factory.annotation.Autowired;

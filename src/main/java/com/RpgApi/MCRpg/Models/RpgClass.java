@@ -1,5 +1,6 @@
 package com.RpgApi.MCRpg.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class RpgClass {
     private String function;
 
     @Column(name = "principal_stat")
+    @JsonProperty(namespace = "principal_stat")
     private String principalStat;
 
     public RpgClass(){}
