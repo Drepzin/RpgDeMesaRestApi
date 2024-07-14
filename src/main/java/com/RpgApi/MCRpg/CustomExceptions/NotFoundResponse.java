@@ -8,19 +8,19 @@ public class NotFoundResponse {
 
     private String message;
     private ZonedDateTime zonedDateTime;
-    HttpStatus htp;
+    private HttpStatus http_status;
 
     public NotFoundResponse(String message,
                             ZonedDateTime zonedDateTime,
-                            HttpStatus htp) {
+                            HttpStatus http) {
         this.message = message;
         this.zonedDateTime = zonedDateTime;
-        this.htp = htp;
+        this.http_status = http;
     }
 
     public String getMessage() {return message;}
 
     public ZonedDateTime getZonedDateTime() {return zonedDateTime;}
 
-    public HttpStatus getHtp() {return htp;}
+    public HttpStatus getHtp() {return http_status;}
 }

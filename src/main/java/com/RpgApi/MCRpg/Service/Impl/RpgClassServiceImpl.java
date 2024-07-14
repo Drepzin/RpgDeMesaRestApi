@@ -1,9 +1,10 @@
 package com.RpgApi.MCRpg.Service.Impl;
 
-import com.RpgApi.MCRpg.CustomExceptions.RpgClassInvalidException;
+import com.RpgApi.MCRpg.CustomExceptions.RpgClassExistentException;
 import com.RpgApi.MCRpg.Models.RpgClass;
 import com.RpgApi.MCRpg.Repos.RpgClassRepo;
 import com.RpgApi.MCRpg.Service.RpgClassService;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,19 +17,16 @@ public class RpgClassServiceImpl implements RpgClassService {
     @Autowired
     private RpgClassRepo rcp;
 
+    @Autowired
+    EntityManager em;
+
     @Override
     public RpgClass addRpgClass(RpgClass rpgClass) {
-        if (rpgClass.getPrincipalStat() == null |
-                rpgClass.getFunction() == null |
-                rpgClass.getName() == null){
-
-            throw new RpgClassInvalidException("Classe invalida, cheque os parametros!");
-        }
         return rcp.save(rpgClass);
     }
 
     @Override
-    public RpgClass findById(String id) {
+    public RpgClass findById(Long id) {
         Optional<RpgClass> oprc = rcp.findById(id);
         return oprc.orElse(null);
     }
@@ -39,7 +37,8 @@ public class RpgClassServiceImpl implements RpgClassService {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         rcp.deleteById(id);
     }
+
 }

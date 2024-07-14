@@ -10,16 +10,44 @@ public class PlayerVO {
 
     private String name;
 
-    private int level;
+    private Integer level;
 
     private String rpgClass;
 
+    private String race;
+
+    private Integer hp;
+
+    private Integer strength;
+
+    private Integer agility;
+
+    private Integer intelligence;
+
+    private Integer gold;
+
     public PlayerVO(){}
 
-    public PlayerVO(RpgPlayer player){
-        this.name = player.getName();
-        this.level = player.getLevel();
-        this.rpgClass = player.getRpgClass().getName();
+    public PlayerVO(String name, Integer level, String race, Integer hp,
+                    String rpgClass, Integer strength,
+                    Integer agility, Integer intelligence, Integer gold) {
+        this.name = name;
+        this.level = level;
+        this.race = race;
+        this.hp = hp;
+        this.rpgClass = rpgClass;
+        this.strength = strength;
+        this.agility = agility;
+        this.intelligence = intelligence;
+        this.gold = gold;
+    }
+
+    public Integer getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
     }
 
     public String getName() {
@@ -30,14 +58,6 @@ public class PlayerVO {
         this.name = name;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     public String getRpgClass() {
         return rpgClass;
     }
@@ -46,17 +66,65 @@ public class PlayerVO {
         this.rpgClass = rpgClass;
     }
 
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public Integer getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public Integer getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public Integer getAgility() {
+        return agility;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public Integer getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlayerVO playerVO = (PlayerVO) o;
-        return level == playerVO.level && Objects.equals(name, playerVO.name) && Objects.equals(rpgClass, playerVO.rpgClass);
+        return Objects.equals(name, playerVO.name) && Objects.equals(level, playerVO.level) && Objects.equals(rpgClass, playerVO.rpgClass) && Objects.equals(race, playerVO.race) && Objects.equals(hp, playerVO.hp) && Objects.equals(strength, playerVO.strength) && Objects.equals(agility, playerVO.agility) && Objects.equals(intelligence, playerVO.intelligence) && Objects.equals(gold, playerVO.gold);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, level, rpgClass);
+        return Objects.hash(name, level, rpgClass, race, hp, strength, agility, intelligence, gold);
     }
 
     @Override
@@ -65,6 +133,11 @@ public class PlayerVO {
                 "name='" + name + '\'' +
                 ", level=" + level +
                 ", rpgClass='" + rpgClass + '\'' +
+                ", race='" + race + '\'' +
+                ", hp=" + hp +
+                ", strength=" + strength +
+                ", agility=" + agility +
+                ", intelligence=" + intelligence +
                 '}';
     }
 }
