@@ -1,16 +1,17 @@
 package com.RpgApi.MCRpg.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-@Table(name = "Rpg_itens")
+@Table(name = "rpg_itens")
 public class RpgItem {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
 
     private String description;
@@ -25,7 +26,8 @@ public class RpgItem {
 
     private String hability;
 
-    public RpgItem(){}
+    public RpgItem(){
+    }
 
     public RpgItem(String name, String hability, int health, String description,
                    int damage, String rarity, int arcanePower) {
@@ -36,6 +38,14 @@ public class RpgItem {
         this.damage = damage;
         this.rarity = rarity;
         this.arcanePower = arcanePower;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -4,5 +4,5 @@ import com.RpgApi.MCRpg.Models.ItensOfBag;
 
 public interface ItensOfBagService {
 
-    ItensOfBag addItens()
+    ItensOfBag addItens();
 }

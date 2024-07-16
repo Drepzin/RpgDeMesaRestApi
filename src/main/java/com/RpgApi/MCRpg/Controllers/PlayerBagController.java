@@ -2,7 +2,6 @@ package com.RpgApi.MCRpg.Controllers;
 
 import com.RpgApi.MCRpg.Models.PlayerBag;
 import com.RpgApi.MCRpg.Service.Impl.BagServiceImpl;
-import com.RpgApi.MCRpg.Service.Impl.PlayerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;

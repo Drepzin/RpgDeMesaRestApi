@@ -5,6 +5,7 @@ import com.RpgApi.MCRpg.Models.RpgPlayer;
 import com.RpgApi.MCRpg.VOs.PlayerVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -16,4 +17,5 @@ public interface PlayerMapper {
 
     @Mapping(source = "rpgClass", target = "rpgClass.name")
     public RpgPlayer voToPlayer(PlayerVO playerVO);
+
 }

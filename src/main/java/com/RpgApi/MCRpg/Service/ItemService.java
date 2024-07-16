@@ -1,20 +1,21 @@
 package com.RpgApi.MCRpg.Service;
 
 import com.RpgApi.MCRpg.Models.RpgItem;
+import com.RpgApi.MCRpg.VOs.ItemVo;
 
 import java.util.List;
 
 public interface ItemService {
 
-    RpgItem addItem(RpgItem rpgItem);
+    ItemVo addItem(RpgItem rpgItem);
 
-    RpgItem updateItemById(Long id, RpgItem rpgItem);
+    ItemVo updateItemById(Long id, ItemVo itemVo);
 
-    RpgItem findById(Long id);
+    ItemVo findById(Long id);
 
-    List<RpgItem> findByName(String name);
+    List<ItemVo> findByName(String name);
 
-    List<RpgItem> findAll();
+    List<ItemVo> findAll();
 
     void deleteById(Long id);
 

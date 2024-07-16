@@ -33,7 +33,7 @@ public class PlayerController {
         return new ResponseEntity<>(pmi.playerToVo(player), HttpStatusCode.valueOf(200));
     }
 
-    @PatchMapping("/atualizar/{id}")
+    @PatchMapping("/update/{id}")
     public ResponseEntity<PlayerVO> attPlayer(@PathVariable(name = "id") Long id,
                                               @RequestBody PlayerVO playerVO) throws JsonMappingException {
         RpgPlayer player = playerService.updateById(id, playerVO);

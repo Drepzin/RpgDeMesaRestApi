@@ -17,7 +17,7 @@ public class ItensOfBag {
     private PlayerBag playerBag;
 
     @ManyToOne
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "item_id", referencedColumnName = "id")
     private RpgItem rpgItem;
 
     private int quantity;
