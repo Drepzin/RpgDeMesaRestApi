@@ -7,7 +7,10 @@ import com.RpgApi.MCRpg.Models.RpgPlayer;
 import com.RpgApi.MCRpg.Repos.PlayerRepo;
 import com.RpgApi.MCRpg.Repos.RpgClassRepo;
 import com.RpgApi.MCRpg.Service.PlayerService;
+import com.RpgApi.MCRpg.VOs.ItemBagVO;
+import com.RpgApi.MCRpg.VOs.ItemVo;
 import com.RpgApi.MCRpg.VOs.PlayerVO;
+import com.RpgApi.MCRpg.VOs.projections.PlayerProjection;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +40,7 @@ public class PlayerServiceImpl implements PlayerService {
             return playerRepo.save(rpgPlayer);
         }
         else {
-            throw new NotFoundException("Classe não encontrada!");
+            throw new NotFoundException("Class not found!");
         }
     }
 
@@ -54,7 +57,7 @@ public class PlayerServiceImpl implements PlayerService {
            return optionalRpgPlayer.get();
        }
        else {
-           throw new NotFoundException("Id invalido!, jogador não encontrado");
+           throw new NotFoundException("Invalid ID, player not found!");
        }
     }
 
@@ -94,5 +97,9 @@ public class PlayerServiceImpl implements PlayerService {
             oldPlayer.setLevel(oldPlayer.getLevel());
         }
         return oldPlayer;
+    }
+
+    public List<PlayerProjection> findPlayersName(String name){
+        return playerRepo.foundPlayers(name);
     }
 }

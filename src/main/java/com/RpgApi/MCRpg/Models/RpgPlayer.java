@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @JsonInclude(content = JsonInclude.Include.NON_NULL)
 @Entity
-@Table(name = "jogadores")
+@Table(name = "players")
 public class RpgPlayer {
 
     @Id

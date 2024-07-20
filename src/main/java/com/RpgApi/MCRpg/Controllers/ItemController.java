@@ -37,4 +37,9 @@ public class ItemController {
     public ResponseEntity<List<ItemVo>> findAllItem(){
         return new ResponseEntity<>(itemService.findAll(), HttpStatusCode.valueOf(200));
     }
+
+    @DeleteMapping("/delete_item/{id}")
+    public void deleteItem(@PathVariable(name = "id") Long id){
+        itemService.deleteById(id);
+    }
 }
